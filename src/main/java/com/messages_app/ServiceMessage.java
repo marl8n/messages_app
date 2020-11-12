@@ -31,15 +31,27 @@ public class ServiceMessage {
     }
     
     public static void listMessage() {
-        //
+        DAOMessage.readMessageDB();
     }
     
     public static void deleteMessage() {
-        //
+        int idMessage = -1;
+        System.out.print("Indique el id del mensaje a borrar");
+        Scanner sc = new Scanner(System.in);
+        idMessage = Integer.valueOf(sc.nextLine());
+        DAOMessage.deleteMessageDB(idMessage);
     }
     
     public static void editMessage() {
-        //
+        String text = "";
+        int idMessage = -1;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Escribe el nuevo texto del mensaje: ");
+        text = sc.nextLine();
+        System.out.println("Indica el id del mensaje que quieras editar: ");
+        idMessage = Integer.valueOf(sc.nextLine());
+        
+        DAOMessage.actualizeMessage(idMessage, text);
     }
     
 }
